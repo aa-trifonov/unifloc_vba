@@ -241,7 +241,7 @@ class VBA_Func_Header:
         list of pattern, that will be deleted in sting
         """
         not_nedeed_in_api = [self.func_name, "ByVal",  "Optional", "Double", "Integer", "Boolean", "Long" , "Variant",
-                                "String", "Public", " As ", "Function", " _ ", " ",  "\n", "\' ", "(_", 'TEMP_CALC_METHOD']
+                                "String", "Public", " As ", "Function", " _ ", " ",  "\n", "\' ", "(_", 'TEMP_CALC_METHOD', "H_CORRELATION"]
 
         not_nedeed_in_string = [self.func_name, "ByVal","-1", "const", "Optional", "Double", "Integer", "Boolean", "Long" , "Variant",
                                 "String", "Public", " As ", "Function", " _ ", " ", "=",  "\n", "\' ", "(_",

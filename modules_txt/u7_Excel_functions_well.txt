@@ -16,9 +16,9 @@ Public Function wellESP_plin_pwf_atma( _
              ByVal q_liq_sm3day As Double, _
              ByVal fw_perc As Double, _
     Optional ByVal q_gas_sm3day As Double = 0, _
-    Optional ByVal p_cas_atma As Double, _
+    Optional ByVal p_cas_atma As Double = 20, _
     Optional ByVal str_PVT As String = PVT_DEFAULT, _
-    Optional ByVal str_construct As String = "", _
+    Optional ByVal str_struct As String = "", _
     Optional ByVal str_ESP As String = "", _
     Optional ByVal str_gassep As String = "", _
     Optional ByVal str_motor As String = "", _
@@ -71,7 +71,7 @@ On Error GoTo err1:
     
     Call well.init_well_full( _
                             str_PVT, _
-                            str_construct, _
+                            str_struct, _
                             str_ESP, _
                             str_gassep, _
                             str_motor, _
@@ -91,7 +91,7 @@ err1:
    msg = "wellESP_plin_pwf_atma: error " + sDELIM + Err.Description
    addLogMsg msg
 End Function
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+''    d e scription_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' Расчет забойного давления скважины,
 '' расчет распределения давления и температуры в скважине
 '' с использованием многофазных корреляций
@@ -536,7 +536,7 @@ End Function
 'err1:
 '    Resume Next
 'End Function
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+'' des cription_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' Расчет устьевого давления скважины по давлению на приеме.
 '' Расчет распределения давления и температуры в скважине
 '' с использованием многофазных корреляций.
@@ -637,7 +637,7 @@ End Function
 '    wellESP_plin_pintake_atma = Array(-1, "error")
 '    addLogMsg "Error:wellESP_plin_pintake_atma:" & Err.Description
 'End Function
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+'' de scription_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' Расчет забойного давления по узловому анализу,
 '' скважины и пласта.
 'Public Function nodal_pwf_atma( _

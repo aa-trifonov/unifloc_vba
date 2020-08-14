@@ -301,7 +301,7 @@ Public Function crv_fit_linear(YA, _
                            XA, _
                    Optional out As Long, _
                    Optional weight, _
-                   Optional constraints)
+                   Optional restrictions)
 ' YA    - Y вектор исходных данных [0..N-1] (столбец или массив)
 ' XA    - x матрица исходных данных [0..N-1, 0..D-1]
 '        (таблица или массив)
@@ -311,16 +311,16 @@ Public Function crv_fit_linear(YA, _
 '      out=2 отчет по подбору аппроксимации,
 '          AvgError, AvgRelError, MaxError, RMSError, TaskRCond.
 ' weight - вектор весов [0..N-1] дл€ каждого параметра
-' constraints - матрица ограничений — [0..K-1, 0..D] така€ что
+' restrictions - матрица ограничений — [0..K-1, 0..D] така€ что
 '               C[I,0]*M[0] + ... + C[I,D-1]*C[D-1] = CMatrix[I,D]
 ' результат
 '          вектор M минимизирующий min|XM-Y|
 'description_end
 On Error GoTo err1:
-    If IsMissing(weight) Or IsMissing(constraints) Then
+    If IsMissing(weight) Or IsMissing(restrictions) Then
         crv_fit_linear = AL_Linest(YA, XA, out)
     Else
-        crv_fit_linear = AL_LinestCW(YA, XA, out, weight, constraints)
+        crv_fit_linear = AL_LinestCW(YA, XA, out, weight, restrictions)
     End If
 Exit Function
 err1:
@@ -336,7 +336,7 @@ Public Function crv_fit_poly(YA As Variant, _
                    Optional out As Long, _
                    Optional XIA As Variant, _
                    Optional weight, _
-                   Optional constraints)
+                   Optional restrictions)
 ' YA    - Y вектор исходных данных [0..N-1] (столбец или массив)
 ' XA    - ’ вектор исходных данных [0..N-1] (таблица или массив)
 ' M     - степень полинома дл€ аппроксимации
@@ -346,7 +346,7 @@ Public Function crv_fit_poly(YA As Variant, _
 '            AvgError, AvgRelError, MaxError, RMSError, TaskRCond.
 ' XIA   - ’ вектор значений дл€ расчета аппроксимации [0..D-1]
 ' weight   - вектор весов [0..N-1] дл€ каждого параметра
-' constraints - матрица ограничений —[0..K-1,0..2].
+' restrictions - матрица ограничений —[0..K-1,0..2].
 '       —[i,0] - значение x где задано ограничение
 '       —[i,1] - велична ограничени€,
 '       —[i,2] - тип ограничени€ (0 -значение,1 -производна€)
@@ -354,10 +354,10 @@ Public Function crv_fit_poly(YA As Variant, _
 '          вектор YIA значений полинома дл€ XIA
 'description_end
 On Error GoTo err1:
-    If IsMissing(weight) And IsMissing(constraints) Then
+    If IsMissing(weight) And IsMissing(restrictions) Then
         crv_fit_poly = AL_FitPoly(YA, XA, M, out, XIA)
     Else
-        crv_fit_poly = AL_FitPolyCW(YA, XA, M, out, XIA, weight, constraints)
+        crv_fit_poly = AL_FitPolyCW(YA, XA, M, out, XIA, weight, restrictions)
     End If
 Exit Function
 err1:

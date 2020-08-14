@@ -16,7 +16,7 @@ Public Function ESP_head_m( _
         ByVal qliq_m3day As Double, _
         Optional ByVal num_stages As Integer = 1, _
         Optional ByVal freq_Hz As Double = 50, _
-        Optional ByVal pump_id As Long, _
+        Optional ByVal pump_id As Long = 736, _
         Optional ByVal mu_cSt As Double = -1, _
         Optional ByVal c_calibr = 1) As Double
 ' qliq_m3day - дебит жидкости в условиях насоса (стенд)
@@ -167,7 +167,7 @@ End Function
 ' по номинальной кривой РНХ
 Public Function ESP_rate_max_sm3day( _
     Optional ByVal freq_Hz As Double = 50, _
-    Optional ByVal pump_id As Long, _
+    Optional ByVal pump_id As Long = 736, _
     Optional ByVal mu_cSt As Double = -1) As Double
 ' freq_Hz   - частота вращения ЭЦН
 ' pump_id    - идентификатор насоса в базе данных
@@ -191,7 +191,7 @@ End Function
 ' по номинальной кривой РНХ
 Public Function ESP_optRate_m3day( _
     Optional ByVal freq_Hz As Double = 50, _
-    Optional ByVal pump_id As Long) As Double
+    Optional ByVal pump_id As Long = 736) As Double
 ' freq_Hz   - частота вращения ЭЦН
 ' pump_id    - идентификатор насоса в базе данных
 'description_end
@@ -238,7 +238,7 @@ Public Function ESP_p_atma( _
                  ByVal p_calc_atma As Double, _
         Optional ByVal num_stages As Integer = 1, _
         Optional ByVal freq_Hz As Double = 50, _
-        Optional ByVal pump_id As Long, _
+        Optional ByVal pump_id As Long = 736, _
         Optional ByVal str_PVT As String = PVT_DEFAULT, _
         Optional ByVal t_intake_C As Double = 50, _
         Optional ByVal t_dis_C As Double = 50, _
@@ -496,7 +496,7 @@ Public Function ESP_system_calc( _
                  ByVal qgas_free_sm3day As Double, _
                  ByVal p_calc_atma As Double, _
                  ByVal t_intake_C As Double, _
-        Optional ByVal t_dis_C As Double = -1, _
+        Optional ByVal t_dis_C As Double, _
         Optional ByVal str_PVT As String, _
         Optional ByVal str_ESP As String, _
         Optional ByVal str_motor As String, _
@@ -573,11 +573,10 @@ Public Function ESP_motor_calc_mom(ByVal mom_Nm As Double, _
                           Optional ByVal cosphi_nom_fr As Double = 0.8, _
                           Optional ByVal slip_nom_fr As Double = 0.05, _
                           Optional ByVal d_od_mm As Double = 117, _
-                          Optional ByVal lambda As Double = 2, _
+                          Optional ByVal lambda_coef As Double = 2, _
                           Optional ByVal alpha0 As Double = 0.4, _
                           Optional ByVal xi0 As Double = 1.05, _
-                          Optional ByVal Ixcf As Double = 0.4) _
-                  As Variant
+                          Optional ByVal Ixcf As Double = 0.4) As Variant
 ' mom_Nm      - момент развиваемый двигателем на валу, Нм
 ' freq_Hz     - частота вращения внешнего поля
 ' U_V         - напряжение рабочее, линейное, В
@@ -591,7 +590,7 @@ Public Function ESP_motor_calc_mom(ByVal mom_Nm As Double, _
 ' cosphi_nom_fr - коэффициент мощности при номинальном режиме работы
 ' slip_nom_fr - скольжение при номинальном режиме работы
 ' d_od_mm     - внешний диаметр - габарит ПЭД
-' lambda      - для motorID = 2 перегрузочный коэффициент
+' lambda_coef      - для motorID = 2 перегрузочный коэффициент
 '               отношение макс момента к номинальному
 ' alpha0  - параметр. влияет на положение макс КПД.для motorID = 2
 ' xi0     - параметр. определяет потери момента при холостом ходе.
@@ -604,7 +603,7 @@ On Error GoTo er1:
     Dim arr, arr_name
     Dim motor As New CESPMotor
      
-    Call motor.InitMotor(motorID, U_nom_V, P_nom_kW, f_nom_Hz, eff_nom_fr, cosphi_nom_fr, slip_nom_fr, d_od_mm, lambda, alpha0, xi0)
+    Call motor.InitMotor(motorID, U_nom_V, P_nom_kW, f_nom_Hz, eff_nom_fr, cosphi_nom_fr, slip_nom_fr, d_od_mm, lambda_coef, alpha0, xi0)
     Call motor.calc_motor_mom_Nm(mom_Nm, freq_Hz, U_V)
     With motor
         arr = Array(.I_lin_A, .CosPhi_d, .eff_d, .s_d, .M_Nm, .Pshaft_kW)
@@ -629,7 +628,7 @@ Public Function ESP_motor_calc_slip(ByVal S As Double, _
                            Optional ByVal cosphi_nom_fr As Double = 0.8, _
                            Optional ByVal slip_nom_fr As Double = 0.05, _
                            Optional ByVal d_od_mm As Double = 117, _
-                           Optional ByVal lambda As Double = 2, _
+                           Optional ByVal lambda_coef As Double = 2, _
                            Optional ByVal alpha0 As Double = 0.4, _
                            Optional ByVal xi0 As Double = 1.05, _
                            Optional ByVal Ixcf As Double = 0.4)
@@ -643,7 +642,7 @@ Public Function ESP_motor_calc_slip(ByVal S As Double, _
 ' cosphi_nom_fr - коэффициент мощности при номинальном режиме работы
 ' slip_nom_fr - скольжение при номинальном режиме работы
 ' d_od_mm     - внешний диаметр - габарит ПЭД
-' lambda      - для motorID = 2 перегрузочный коэффициент
+' lambda_coef      - для motorID = 2 перегрузочный коэффициент
 '               отношение макс момента к номинальному
 ' alpha0  - параметр. влияет на положение макс КПД.для motorID = 2
 ' xi0     - параметр. определяет потери момента при холостом ходе.
@@ -659,7 +658,7 @@ On Error GoTo er1:
     Dim motor As New CESPMotor
     Dim sk
     With motor
-        Call motor.InitMotor(2, U_nom_V, P_nom_kW, f_nom_Hz, eff_nom_fr, cosphi_nom_fr, slip_nom_fr, d_od_mm, lambda, alpha0, xi0)
+        Call motor.InitMotor(2, U_nom_V, P_nom_kW, f_nom_Hz, eff_nom_fr, cosphi_nom_fr, slip_nom_fr, d_od_mm, lambda_coef, alpha0, xi0)
         sk = .calc_s_M_krit(U_V, freq_Hz)
         motor.calc_motor_slip S, freq_Hz, U_V
         arr = Array(.I_lin_A, .CosPhi_d, .eff_d, .s_d, .M_Nm, .Pshaft_kW, sk(1, 1), sk(1, 2))

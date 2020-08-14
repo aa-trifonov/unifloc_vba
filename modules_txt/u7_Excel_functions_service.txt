@@ -17,8 +17,8 @@ End Function
 ' Функция декодирования json строки,
 ' позволяет вывести содержимое json строки в таблицу
 Public Function decode_json_string(json, _
-                          Optional transpose As Boolean = False, _
                           Optional keys_filter, _
+                          Optional transpose As Boolean = False, _
                           Optional only_values As Boolean = False)
 ' json   - строка содержащая результаты расчета
 ' transpose - выбор вывода в строки или в столбцы
@@ -154,18 +154,18 @@ Public Function PVT_encode_string( _
                     Optional ByVal gamma_gas As Double = const_gg_, _
                     Optional ByVal gamma_oil As Double = const_go_, _
                     Optional ByVal gamma_wat As Double = const_gw_, _
-                    Optional ByVal rsb_m3m3 = const_rsb_default, _
-                    Optional ByVal rp_m3m3, _
-                    Optional ByVal pb_atma, _
-                    Optional ByVal t_res_C, _
-                    Optional ByVal bob_m3m3, _
-                    Optional ByVal muob_cP, _
-                    Optional ByVal PVTcorr, _
-                    Optional ByVal ksep_fr, _
-                    Optional ByVal p_ksep_atma, _
-                    Optional ByVal t_ksep_C, _
-                    Optional ByVal gas_only As Boolean _
-                    )
+                    Optional ByVal rsb_m3m3 As Double = const_rsb_default, _
+                    Optional ByVal rp_m3m3 As Double = const_rsb_default, _
+                    Optional ByVal pb_atma As Double = -1, _
+                    Optional ByVal t_res_C As Double = const_tres_default, _
+                    Optional ByVal bob_m3m3 As Double = -1, _
+                    Optional ByVal muob_cP As Double = -1, _
+                    Optional ByVal PVTcorr As Double = 0, _
+                    Optional ByVal ksep_fr As Double = 0, _
+                    Optional ByVal p_ksep_atma As Double = -1, _
+                    Optional ByVal t_ksep_C As Double = -1, _
+                    Optional ByVal gas_only As Boolean = False)
+                    
 ' gamma_gas - удельная плотность газа, по воздуху.
 '             По умолчанию const_gg_ = 0.6
 ' gamma_oil - удельная плотность нефти, по воде.
@@ -275,8 +275,8 @@ Public Function ESP_pump_encode_string( _
             Optional ByVal head_nom_m As Double = 2000, _
             Optional ByVal num_stages As Integer = 0, _
             Optional ByVal freq_Hz As Double = 50, _
-            Optional ByVal gas_correct, _
-            Optional ByVal c_calibr, _
+            Optional ByVal gas_correct As Double = 10, _
+            Optional ByVal c_calibr As Double = 1, _
             Optional ByVal dnum_stages_integrate = 1)
 ' esp_ID         - идентификатор насоса
 ' head_nom_m     - номинальный напор системы УЭЦН
@@ -350,7 +350,7 @@ End Function
 'description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 ' функция кодирования параметров ПЭД в строку
 Public Function ESP_motor_encode_string( _
-            Optional ByVal motor_ID As Long = 0, _
+            Optional ByVal motor_ID As Long, _
             Optional ByVal U_surf_high_lin_V As Double, _
             Optional ByVal f_surf_Hz As Double, _
             Optional ByVal power_fact_kW As Double, _
@@ -361,7 +361,7 @@ Public Function ESP_motor_encode_string( _
             Optional ByVal cosphi_nom_fr As Double, _
             Optional ByVal slip_nom_fr As Double, _
             Optional ByVal d_od_mm As Double, _
-            Optional ByVal lambda As Double, _
+            Optional ByVal lambda_coef As Double, _
             Optional ByVal alpha0 As Double, _
             Optional ByVal xi0 As Double, _
             Optional ByVal Ixcf As Double)
@@ -378,7 +378,7 @@ Public Function ESP_motor_encode_string( _
 'cosphi_nom_fr - коэффициент мощности при номинальном режиме работы
 'slip_nom_fr - скольжение при номинальном режиме работы
 'd_od_mm - внешний диаметр - габарит ПЭД
-'lambda - для motorID = 2 перегрузочный коэффициент
+'lambda_coef - для motorID = 2 перегрузочный коэффициент
 '         отношение макс момента к номинальному
 'alpha0 - параметр. влияет на положение макс КПД.для motorID = 2
 'xi0 - параметр. определяет потери момента при холостом ходе.
@@ -401,7 +401,7 @@ Public Function ESP_motor_encode_string( _
    If slip_nom_fr > 0 Then dict.Add "slip_nom_fr", slip_nom_fr
    If d_od_mm > 0 Then dict.Add "d_od_mm", d_od_mm
     
-   If lambda > 0 Then dict.Add "lambda", lambda
+   If lambda_coef > 0 Then dict.Add "lambda", lambda_coef
    If alpha0 > 0 Then dict.Add "alpha0", alpha0
    If xi0 > 0 Then dict.Add "xi0", xi0
    If Ixcf > 0 Then dict.Add "Ixcf", Ixcf
@@ -417,8 +417,8 @@ Public Function ESP_cable_encode_string( _
             Optional ByVal cable_t_max_C As Double, _
             Optional ByVal manufacturer As String = "no", _
             Optional ByVal name As String = "no", _
-            Optional ByVal d_mm As Double, _
-            Optional ByVal length_m As Double)
+            Optional ByVal d_mm As Double = 15, _
+            Optional ByVal length_m As Double = 2000)
 ' cable_R_Omkm - удельное активное сопротивление
 ' cable_X_Omkm - удельное реактивное сопротивление
 ' cable_t_max_C - максимально допустимая температура
@@ -445,7 +445,7 @@ End Function
 Public Function ESP_separation_encode_string( _
             Optional ByVal separation_mode As String, _
             Optional ByVal gassep_type As Long, _
-            Optional ByVal natsep_type As Long = 0, _
+            Optional ByVal natsep_type As Long, _
             Optional ByVal psep_man_atma As Double, _
             Optional ByVal tsep_man_C As Double, _
             Optional ByVal ksep_gassep_man_d As Double, _
@@ -454,7 +454,7 @@ Public Function ESP_separation_encode_string( _
             Optional ByVal M_Nm As Double, _
             Optional ByVal manufacturer As String = "no", _
             Optional ByVal name As String = "no", _
-            Optional ByVal length_m As Double)
+            Optional ByVal length_m As Double = 2000)
 ' separation_mode - режим расчета сепарации
 ' gassep_type - тип - номер из базы
 ' natsep_type - модель расчета естественной сепарации
@@ -538,7 +538,7 @@ Public Function AmbientFormation_encode_string( _
     AmbientFormation_encode_string = ConvertToJson(dict)
 End Function
 ''=============================
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+''      escription_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' функция расшифровки параметров газлифтной компоновки скважины
 'Public Function GL_decode_string(well_GL_str As String, _
 '                  Optional ByVal getStr As Boolean = False)
@@ -627,7 +627,7 @@ End Function
 '
 'End Function
 '
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+''     escription_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' функция кодирования параметров работы скважины с газлифтом
 'Public Function GL_encode_string( _
 '                    Optional q_gas_inj_sm3day As Double = 0, _

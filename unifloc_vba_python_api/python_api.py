@@ -267,7 +267,7 @@ class API():
         self.f_MF_dpdl_atmm = self.book.macro("MF_dpdl_atmm")
         return self.f_MF_dpdl_atmm(d_m,p_atma,Ql_rc_m3day,Qg_rc_m3day,mu_oil_cP,mu_gas_cP,sigma_oil_gas_Nm,rho_lrc_kgm3,rho_grc_kgm3,eps_m,theta_deg,hcorr,param_out,c_calibr_grav,c_calibr_fric)
 
-    def MF_calibr_pipeline(self, p_calc_from_atma,p_calc_to_atma,t_calc_from_C,t_val,h_list_m,diam_list_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=H_CORRELATION,temp_method=StartEndTemp,c_calibr=1,roughness_m=0.0001,out_curves=1,out_curves_num_points=20,calibr_type=0):
+    def MF_calibr_pipeline(self, p_calc_from_atma,p_calc_to_atma,t_calc_from_C,t_val,h_list_m,diam_list_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=0,temp_method=StartEndTemp,c_calibr=1,roughness_m=0.0001,out_curves=1,out_curves_num_points=20,calibr_type=0):
         """
  ========== description ============== 
  подбор параметров потока через трубу при известном  перепаде давления с использованием многофазных корреляций 
@@ -315,7 +315,7 @@ class API():
         self.f_MF_calibr_pipeline = self.book.macro("MF_calibr_pipeline")
         return self.f_MF_calibr_pipeline(p_calc_from_atma,p_calc_to_atma,t_calc_from_C,t_val,h_list_m,diam_list_mm,qliq_sm3day,fw_perc,q_gas_sm3day,str_PVT,calc_flow_direction,hydr_corr,temp_method,c_calibr,roughness_m,out_curves,out_curves_num_points,calibr_type)
 
-    def MF_calibr_pipe(self, p_calc_from_atma,p_calc_to_atma,t_calc_from_C,t_calc_to_C,length_m,theta_deg,d_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=H_CORRELATION,c_calibr=1,roughness_m=0.0001,calibr_type=0):
+    def MF_calibr_pipe(self, p_calc_from_atma,p_calc_to_atma,t_calc_from_C,t_calc_to_C,length_m,theta_deg,d_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=0,c_calibr=1,roughness_m=0.0001,calibr_type=0):
         """
  ========== description ============== 
  подбор параметров потока через трубу при известном  перепаде давления с использованием многофазных корреляций  (лучше не использовать - используйте MF_calibr_pipeline) 
@@ -391,7 +391,7 @@ class API():
         self.f_MF_calibr_choke = self.book.macro("MF_calibr_choke")
         return self.f_MF_calibr_choke(qliq_sm3day,fw_perc,d_choke_mm,p_in_atma,p_out_atma,d_pipe_mm,t_choke_C,str_PVT,q_gas_sm3day,calibr_type)
 
-    def MF_p_pipeline_atma(self, p_calc_from_atma,t_calc_from_C,t_val_C,h_list_m,diam_list_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=H_CORRELATION,temp_method=StartEndTemp,c_calibr=1,roughness_m=0.0001,out_curves=1,out_curves_num_points=20,num_value=0,znlf=False):
+    def MF_p_pipeline_atma(self, p_calc_from_atma,t_calc_from_C,t_val_C,h_list_m,diam_list_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=0,temp_method=StartEndTemp,c_calibr=1,roughness_m=0.0001,out_curves=1,out_curves_num_points=20,num_value=0,znlf=False):
         """
  ========== description ============== 
  расчет распределения давления и температуры в трубопроводе  с использованием многофазных корреляций 
@@ -439,7 +439,7 @@ class API():
         self.f_MF_p_pipeline_atma = self.book.macro("MF_p_pipeline_atma")
         return self.f_MF_p_pipeline_atma(p_calc_from_atma,t_calc_from_C,t_val_C,h_list_m,diam_list_mm,qliq_sm3day,fw_perc,q_gas_sm3day,str_PVT,calc_flow_direction,hydr_corr,temp_method,c_calibr,roughness_m,out_curves,out_curves_num_points,num_value,znlf)
 
-    def MF_p_pipe_atma(self, p_calc_from_atma,t_calc_from_C,t_calc_to_C,length_m,theta_deg,d_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=H_CORRELATION,c_calibr=1,roughness_m=0.0001,out_curves=1,out_curves_num_points=20,num_value=0):
+    def MF_p_pipe_atma(self, p_calc_from_atma,t_calc_from_C,t_calc_to_C,length_m,theta_deg,d_mm,qliq_sm3day,fw_perc,q_gas_sm3day=0,str_PVT=PVT_DEFAULT,calc_flow_direction=11,hydr_corr=0,c_calibr=1,roughness_m=0.0001,out_curves=1,out_curves_num_points=20,num_value=0):
         """
  ========== description ============== 
  расчет распределения давления и температуры в трубе  (лучше не использовать - используйте MF_p_pipeline_atma) 
@@ -1653,7 +1653,7 @@ class API():
         self.f_IPR_pi_sm3dayatm = self.book.macro("IPR_pi_sm3dayatm")
         return self.f_IPR_pi_sm3dayatm(Qtest_sm3day,pwf_test_atma,pres_atma,fw_perc,pb_atma)
 
-    def ESP_head_m(self, qliq_m3day,num_stages=1,freq_Hz=50,pump_id,mu_cSt=-1,c_calibr=1):
+    def ESP_head_m(self, qliq_m3day,num_stages=1,freq_Hz=50,pump_id=736,mu_cSt=-1,c_calibr=1):
         """
  ========== description ============== 
  номинальный напор ЭЦН (на основе каталога ЭЦН)  учитывается поправка на вязкость 
@@ -1739,7 +1739,7 @@ class API():
         self.f_ESP_name = self.book.macro("ESP_name")
         return self.f_ESP_name(pump_id)
 
-    def ESP_rate_max_sm3day(self, freq_Hz=50,pump_id,mu_cSt=-1):
+    def ESP_rate_max_sm3day(self, freq_Hz=50,pump_id=736,mu_cSt=-1):
         """
  ========== description ============== 
  максимальный дебит ЭЦН для заданной частоты  по номинальной кривой РНХ 
@@ -1757,7 +1757,7 @@ class API():
         self.f_ESP_rate_max_sm3day = self.book.macro("ESP_rate_max_sm3day")
         return self.f_ESP_rate_max_sm3day(freq_Hz,pump_id,mu_cSt)
 
-    def ESP_optRate_m3day(self, freq_Hz=50,pump_id):
+    def ESP_optRate_m3day(self, freq_Hz=50,pump_id=736):
         """
  ========== description ============== 
  оптимальный дебит ЭЦН для заданной частоты  по номинальной кривой РНХ 
@@ -1787,7 +1787,7 @@ class API():
         self.f_ESP_id_by_rate = self.book.macro("ESP_id_by_rate")
         return self.f_ESP_id_by_rate(q)
 
-    def ESP_p_atma(self, qliq_sm3day,fw_perc,p_calc_atma,num_stages=1,freq_Hz=50,pump_id,str_PVT=PVT_DEFAULT,t_intake_C=50,t_dis_C=50,calc_along_flow=1,ESP_gas_correct=1,c_calibr=1,dnum_stages_integrate=1,out_curves_num_points=20,num_value=0,q_gas_sm3day=0):
+    def ESP_p_atma(self, qliq_sm3day,fw_perc,p_calc_atma,num_stages=1,freq_Hz=50,pump_id=736,str_PVT=PVT_DEFAULT,t_intake_C=50,t_dis_C=50,calc_along_flow=1,ESP_gas_correct=1,c_calibr=1,dnum_stages_integrate=1,out_curves_num_points=20,num_value=0,q_gas_sm3day=0):
         """
  ========== description ============== 
 функция расчета давления на выходе/входе ЭЦН в рабочих условиях 
@@ -1873,7 +1873,7 @@ class API():
         self.f_ESP_calibr_pump = self.book.macro("ESP_calibr_pump")
         return self.f_ESP_calibr_pump(qliq_sm3day,fw_perc,p_int_atma,p_dis_atma,num_stages,freq_Hz,pump_id,str_PVT,t_intake_C,t_dis_C,calc_along_flow,ESP_gas_correct,c_calibr,dnum_stages_integrate,calibr_type)
 
-    def ESP_system_calc(self, qliq_sm3day,fw_perc,qgas_free_sm3day,p_calc_atma,t_intake_C,t_dis_C=-1,str_PVT,str_ESP,str_motor,str_cable,str_gassep,calc_along_flow=1,out_curves_num_points=20,num_value=0):
+    def ESP_system_calc(self, qliq_sm3day,fw_perc,qgas_free_sm3day,p_calc_atma,t_intake_C,t_dis_C,str_PVT,str_ESP,str_motor,str_cable,str_gassep,calc_along_flow=1,out_curves_num_points=20,num_value=0):
         """
  ========== description ============== 
  расчет производительности системы УЭЦН  считает перепад давления, электрические параметры и деградацию КПД 
@@ -1913,7 +1913,7 @@ class API():
         self.f_ESP_system_calc = self.book.macro("ESP_system_calc")
         return self.f_ESP_system_calc(qliq_sm3day,fw_perc,qgas_free_sm3day,p_calc_atma,t_intake_C,t_dis_C,str_PVT,str_ESP,str_motor,str_cable,str_gassep,calc_along_flow,out_curves_num_points,num_value)
 
-    def ESP_motor_calc_mom(self, mom_Nm,freq_Hz=50,U_V=-1,U_nom_V=500,P_nom_kW=10,f_nom_Hz=50,motorID=0,eff_nom_fr=0.85,cosphi_nom_fr=0.8,slip_nom_fr=0.05,d_od_mm=117,lambda=2,alpha0=0.4,xi0=1.05,Ixcf=0.4_):
+    def ESP_motor_calc_mom(self, mom_Nm,freq_Hz=50,U_V=-1,U_nom_V=500,P_nom_kW=10,f_nom_Hz=50,motorID=0,eff_nom_fr=0.85,cosphi_nom_fr=0.8,slip_nom_fr=0.05,d_od_mm=117,lambda_coef=2,alpha0=0.4,xi0=1.05,Ixcf=0.4):
         """
  ========== description ============== 
  функция расчета параметров двигателя по заданному моменту на валу 
@@ -1942,20 +1942,20 @@ class API():
 
      d_od_mm - внешний диаметр - габарит пэд    
 
-     lambda - для motorid = 2 перегрузочный коэффициент  отношение макс момента к номинальному    
+     lambda_coef - для motorid = 2 перегрузочный коэффициент  отношение макс момента к номинальному    
 
      alpha0 - параметр. влияет на положение макс кпд.для motorid = 2    
 
-     xi0 - параметр. определяет потери момента при холостом ходе.  для motorid = 2  ixcf - поправка на поправку тока холостого хода  при изменении напряжения и частоты от минимальн..см.мануал   
+     xi0 - параметр. определяет потери момента при холостом ходе.  для motorid = 2    
 
-   ixcf_  
+     ixcf - поправка на поправку тока холостого хода  при изменении напряжения и частоты от минимальной.   
 
         """
 
         self.f_ESP_motor_calc_mom = self.book.macro("ESP_motor_calc_mom")
-        return self.f_ESP_motor_calc_mom(mom_Nm,freq_Hz,U_V,U_nom_V,P_nom_kW,f_nom_Hz,motorID,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda,alpha0,xi0,Ixcf_)
+        return self.f_ESP_motor_calc_mom(mom_Nm,freq_Hz,U_V,U_nom_V,P_nom_kW,f_nom_Hz,motorID,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda_coef,alpha0,xi0,Ixcf)
 
-    def ESP_motor_calc_slip(self, S,freq_Hz=50,U_V=-1,U_nom_V=500,P_nom_kW=10,f_nom_Hz=50,eff_nom_fr=0.85,cosphi_nom_fr=0.8,slip_nom_fr=0.05,d_od_mm=117,lambda=2,alpha0=0.4,xi0=1.05,Ixcf=0.4):
+    def ESP_motor_calc_slip(self, S,freq_Hz=50,U_V=-1,U_nom_V=500,P_nom_kW=10,f_nom_Hz=50,eff_nom_fr=0.85,cosphi_nom_fr=0.8,slip_nom_fr=0.05,d_od_mm=117,lambda_coef=2,alpha0=0.4,xi0=1.05,Ixcf=0.4):
         """
  ========== description ============== 
  расчет полной характеристики двигателя от проскальзования  по заданной величине скольжения (на основе схемы замещения) 
@@ -1982,7 +1982,7 @@ class API():
 
      d_od_mm - внешний диаметр - габарит пэд    
 
-     lambda - для motorid = 2 перегрузочный коэффициент  отношение макс момента к номинальному    
+     lambda_coef - для motorid = 2 перегрузочный коэффициент  отношение макс момента к номинальному    
 
      alpha0 - параметр. влияет на положение макс кпд.для motorid = 2    
 
@@ -1993,7 +1993,7 @@ class API():
         """
 
         self.f_ESP_motor_calc_slip = self.book.macro("ESP_motor_calc_slip")
-        return self.f_ESP_motor_calc_slip(S,freq_Hz,U_V,U_nom_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda,alpha0,xi0,Ixcf)
+        return self.f_ESP_motor_calc_slip(S,freq_Hz,U_V,U_nom_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda_coef,alpha0,xi0,Ixcf)
 
     def ESP_motor_nameplate(self, Unom_V=500,Pnom_kW=10,Fnom_Hz=50,motorID=0,eff_fr=0.85,cosphi_fr=0.8,slip_fr=0.05,d_od_mm=117,num=1):
         """
@@ -2323,7 +2323,7 @@ class API():
         self.f_unf_version = self.book.macro("unf_version")
         return self.f_unf_version()
 
-    def decode_json_string(self, json,transpose=False,keys_filter,only_values=False):
+    def decode_json_string(self, json,keys_filter,transpose=False,only_values=False):
         """
  ========== description ============== 
  Функция декодирования json строки,  позволяет вывести содержимое json строки в таблицу 
@@ -2332,18 +2332,18 @@ class API():
 
      json - строка содержащая результаты расчета    
 
-     transpose - выбор вывода в строки или в столбцы    
-
      keys_filter - строка с ключами, которые надо вывести    
+
+     transpose - выбор вывода в строки или в столбцы  keys_filter - строка с ключами, которые надо вывести    
 
      only_values - если = 1 подписи выводиться не будут   
 
         """
 
         self.f_decode_json_string = self.book.macro("decode_json_string")
-        return self.f_decode_json_string(json,transpose,keys_filter,only_values)
+        return self.f_decode_json_string(json,keys_filter,transpose,only_values)
 
-    def PVT_encode_string(self, gamma_gas=const_gg_,gamma_oil=const_go_,gamma_wat=const_gw_,rsb_m3m3=const_rsb_default,rp_m3m3,pb_atma,t_res_C,bob_m3m3,muob_cP,PVTcorr,ksep_fr,p_ksep_atma,t_ksep_C,gas_only):
+    def PVT_encode_string(self, gamma_gas=const_gg_,gamma_oil=const_go_,gamma_wat=const_gw_,rsb_m3m3=const_rsb_default,rp_m3m3=const_rsb_default,pb_atma=-1,t_res_C=const_tres_default,bob_m3m3=-1,muob_cP=-1,PVTcorr=0,ksep_fr=0,p_ksep_atma=-1,t_ksep_C=-1,gas_only=False):
         """
  ========== description ============== 
  Функция кодирования параметров PVT в строку,  для передачи PVT свойств в прикладные функции Унифлок. 
@@ -2374,14 +2374,14 @@ class API():
 
      p_ksep_atma - давление при которой была сепарация    
 
-     t_ksep_c - температура при которой была сепарация  gas_only - флаг - в потоке только газ  по умолчанию false (нефть вода и газ)    
+     t_ksep_c - температура при которой была сепарация    
 
-   gas_only_  
+     gas_only - флаг - в потоке только газ  по умолчанию false (нефть вода и газ)   
 
         """
 
         self.f_PVT_encode_string = self.book.macro("PVT_encode_string")
-        return self.f_PVT_encode_string(gamma_gas,gamma_oil,gamma_wat,rsb_m3m3,rp_m3m3,pb_atma,t_res_C,bob_m3m3,muob_cP,PVTcorr,ksep_fr,p_ksep_atma,t_ksep_C,gas_only_)
+        return self.f_PVT_encode_string(gamma_gas,gamma_oil,gamma_wat,rsb_m3m3,rp_m3m3,pb_atma,t_res_C,bob_m3m3,muob_cP,PVTcorr,ksep_fr,p_ksep_atma,t_ksep_C,gas_only)
 
     def PVT_decode_string(self, str_PVT=PVT_DEFAULT,getStr=False):
         """
@@ -2399,7 +2399,7 @@ class API():
         self.f_PVT_decode_string = self.book.macro("PVT_decode_string")
         return self.f_PVT_decode_string(str_PVT,getStr)
 
-    def ESP_pump_encode_string(self, ESP_ID="1005",head_nom_m=2000,num_stages=0,freq_Hz=50,gas_correct,c_calibr,dnum_stages_integrate=1):
+    def ESP_pump_encode_string(self, ESP_ID="1005",head_nom_m=2000,num_stages=0,freq_Hz=50,gas_correct=10,c_calibr=1,dnum_stages_integrate=1):
         """
  ========== description ============== 
  функция кодирования параметров работы УЭЦН в строку 
@@ -2425,7 +2425,7 @@ class API():
         self.f_ESP_pump_encode_string = self.book.macro("ESP_pump_encode_string")
         return self.f_ESP_pump_encode_string(ESP_ID,head_nom_m,num_stages,freq_Hz,gas_correct,c_calibr,dnum_stages_integrate)
 
-    def ESP_motor_encode_string(self, motor_ID=0,U_surf_high_lin_V,f_surf_Hz,power_fact_kW,U_nom_lin_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda,alpha0,xi0,Ixcf):
+    def ESP_motor_encode_string(self, motor_ID,U_surf_high_lin_V,f_surf_Hz,power_fact_kW,U_nom_lin_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda_coef,alpha0,xi0,Ixcf):
         """
  ========== description ============== 
  функция кодирования параметров ПЭД в строку 
@@ -2454,7 +2454,7 @@ class API():
 
     d_od_mm - внешний диаметр - габарит пэд    
 
-    lambda - для motorid = 2 перегрузочный коэффициент  отношение макс момента к номинальному    
+    lambda_coef - для motorid = 2 перегрузочный коэффициент  отношение макс момента к номинальному    
 
     alpha0 - параметр. влияет на положение макс кпд.для motorid = 2    
 
@@ -2465,9 +2465,9 @@ class API():
         """
 
         self.f_ESP_motor_encode_string = self.book.macro("ESP_motor_encode_string")
-        return self.f_ESP_motor_encode_string(motor_ID,U_surf_high_lin_V,f_surf_Hz,power_fact_kW,U_nom_lin_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda,alpha0,xi0,Ixcf)
+        return self.f_ESP_motor_encode_string(motor_ID,U_surf_high_lin_V,f_surf_Hz,power_fact_kW,U_nom_lin_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,lambda_coef,alpha0,xi0,Ixcf)
 
-    def ESP_cable_encode_string(self, cable_R_Omkm,cable_X_Omkm,cable_t_max_C,manufacturer="no",name="no",d_mm,length_m):
+    def ESP_cable_encode_string(self, cable_R_Omkm,cable_X_Omkm,cable_t_max_C,manufacturer="no",name="no",d_mm=15,length_m=2000):
         """
  ========== description ============== 
  функция кодирования параметров  кабельной линии ПЭД в строку 
@@ -2493,7 +2493,7 @@ class API():
         self.f_ESP_cable_encode_string = self.book.macro("ESP_cable_encode_string")
         return self.f_ESP_cable_encode_string(cable_R_Omkm,cable_X_Omkm,cable_t_max_C,manufacturer,name,d_mm,length_m)
 
-    def ESP_separation_encode_string(self, separation_mode,gassep_type,natsep_type=0,psep_man_atma,tsep_man_C,ksep_gassep_man_d,ksep_nat_man_d,ksep_liquid_man_d,M_Nm,manufacturer="no",name="no",length_m):
+    def ESP_separation_encode_string(self, separation_mode,gassep_type,natsep_type,psep_man_atma,tsep_man_C,ksep_gassep_man_d,ksep_nat_man_d,ksep_liquid_man_d,M_Nm,manufacturer="no",name="no",length_m=2000):
         """
  ========== description ============== 
  функция кодирования газосепаратора 
@@ -2559,46 +2559,6 @@ class API():
         self.f_AmbientFormation_encode_string = self.book.macro("AmbientFormation_encode_string")
         return self.f_AmbientFormation_encode_string(therm_cond_form_WmC,sp_heat_capacity_form_JkgC,therm_cond_cement_WmC,therm_cond_tubing_WmC,therm_cond_casing_WmC,heat_transfer_casing_liquid_Wm2C,heat_transfer_casing_gas_Wm2C,heat_transfer_fluid_convection_Wm2C,t_calc_hr)
 
-    def GL_decode_string(self, 'well_GL_str,'getStr=False):
-        """
- ========== description ============== 
- функция расшифровки параметров газлифтной компоновки скважины 
-        
- ==========  arguments  ============== 
-
-   well_gl_str   
-
-   getstr  
-
-        """
-
-        self.f_GL_decode_string = self.book.macro("GL_decode_string")
-        return self.f_GL_decode_string('well_GL_str,'getStr)
-
-    def GL_encode_string(self, ''q_gas_inj_sm3day=0,'p_gas_inj_atma=0,'d_gas_inj_mm=0,'HmesGLV_m=0,'dGLV_mm=0,'PsurfGLV_atma=0):
-        """
- ========== description ============== 
- функция кодирования параметров работы скважины с газлифтом 
-        
- ==========  arguments  ============== 
-
-   q_gas_inj_sm3day   
-
-   p_gas_inj_atma   
-
-   d_gas_inj_mm   
-
-   hmesglv_m   
-
-   dglv_mm   
-
-   psurfglv_atma  
-
-        """
-
-        self.f_GL_encode_string = self.book.macro("GL_encode_string")
-        return self.f_GL_encode_string(''q_gas_inj_sm3day,'p_gas_inj_atma,'d_gas_inj_mm,'HmesGLV_m,'dGLV_mm,'PsurfGLV_atma)
-
     def well_construction_encode_string(self, h_perf_m,h_tub_m,h_list_m,d_tub_list_mm,d_cas_list_mm,d_choke_mm,t_val_C,rough_m=0.0001):
         """
  ========== description ============== 
@@ -2641,7 +2601,7 @@ class API():
         self.f_crv_encode_string = self.book.macro("crv_encode_string")
         return self.f_crv_encode_string(list)
 
-    def wellESP_plin_pwf_atma(self, p_wf_atma,t_wf_C,q_liq_sm3day,fw_perc,q_gas_sm3day=0,p_cas_atma,str_PVT=PVT_DEFAULT,str_construct="",str_ESP="",str_gassep="",str_motor="",str_cable="",str_amb="",hcorrH_CORRELATION=0,tmethod=StartEndTemp,c_calibr=1,out=0):
+    def wellESP_plin_pwf_atma(self, p_wf_atma,t_wf_C,q_liq_sm3day,fw_perc,q_gas_sm3day=0,p_cas_atma=20,str_PVT=PVT_DEFAULT,str_struct="",str_ESP="",str_gassep="",str_motor="",str_cable="",str_amb="",hcorr=0,tmethod=StartEndTemp,c_calibr=1,out=0):
         """
  ========== description ============== 
  Расчет устьевого давления скважины c УЭЦН,  расчет распределения давления и температуры в скважине  с использованием многофазных корреляций. 
@@ -2662,7 +2622,7 @@ class API():
 
     str_pvt - закодированная строка с параметрами pvt.  если задана - перекрывает другие значения    
 
-   str_ruct   
+   str_struct   
 
     str_esp - закодированная строка с установленным эцн.    
 
@@ -2685,167 +2645,7 @@ class API():
         """
 
         self.f_wellESP_plin_pwf_atma = self.book.macro("wellESP_plin_pwf_atma")
-        return self.f_wellESP_plin_pwf_atma(p_wf_atma,t_wf_C,q_liq_sm3day,fw_perc,q_gas_sm3day,p_cas_atma,str_PVT,str_ruct,str_ESP,str_gassep,str_motor,str_cable,str_amb,hcorr,tmethod,c_calibr,out)
-
-    def well_pwf_plin_atma(self, ''p_lin_atma,'t_wf_C,'t_val_C,'h_list_m,'d_tub_list_mm,'d_cas_list_mm,'q_liq_sm3day,'fw_perc,'q_gas_sm3day=0,'str_PVT=PVT_DEFAULT,'str_AL="",'p_cas_atma,'d_choke_mm,'hydr_corr=H_CORRELATION,'temp_method=StartEndTemp,'c_calibr=1,'roughness_m=0.0001,'out_curves=1,'out_curves_num_points=20,'num_value=0):
-        """
- ========== description ============== 
- Расчет забойного давления скважины,  расчет распределения давления и температуры в скважине  с использованием многофазных корреляций 
-        
- ==========  arguments  ============== 
-
-   p_lin_atma   
-
-   t_wf_c   
-
-   t_val_c   
-
-   h_list_m   
-
-   d_tub_list_mm   
-
-   d_cas_list_mm   
-
-   q_liq_sm3day   
-
-   fw_perc   
-
-   q_gas_sm3day   
-
-   str_pvt   
-
-   str_al   
-
-   p_cas_atma   
-
-   d_choke_mm   
-
-   hydr_corr   
-
-   temp_method   
-
-   c_calibr   
-
-   roughness_m   
-
-   out_curves   
-
-   out_curves_num_points   
-
-   num_value  
-
-        """
-
-        self.f_well_pwf_plin_atma = self.book.macro("well_pwf_plin_atma")
-        return self.f_well_pwf_plin_atma(''p_lin_atma,'t_wf_C,'t_val_C,'h_list_m,'d_tub_list_mm,'d_cas_list_mm,'q_liq_sm3day,'fw_perc,'q_gas_sm3day,'str_PVT,'str_AL,'p_cas_atma,'d_choke_mm,'hydr_corr,'temp_method,'c_calibr,'roughness_m,'out_curves,'out_curves_num_points,'num_value)
-
-    def wellESP_plin_pintake_atma(self, ''qliq_sm3day,'fw_perc,'pintake_atma,'h_perf_m,'p_cas_atma,'d_choke_mm,'str_PVT=PVT_DEFAULT,'str_AL="",'hmes_habs_list_m=0,'dtub_list_mm=0,'dcas_list_mm=0,'temp_list_C=0,'hydr_corr=H_CORRELATION,'temp_method=StartEndTemp,'twf_C=0,'c_calibr_grav=1,'c_calibr_fric=1,'c_calibr_choke=1,'q_gas_sm3day=0,'param_out=1,'num_pt_crv=21):
-        """
- ========== description ============== 
- Расчет устьевого давления скважины по давлению на приеме.  Расчет распределения давления и температуры в скважине  с использованием многофазных корреляций. 
-        
- ==========  arguments  ============== 
-
-   qliq_sm3day   
-
-   fw_perc   
-
-   pintake_atma   
-
-   h_perf_m   
-
-   p_cas_atma   
-
-   d_choke_mm   
-
-   str_pvt   
-
-   str_al   
-
-   hmes_habs_list_m   
-
-   dtub_list_mm   
-
-   dcas_list_mm   
-
-   temp_list_c   
-
-   hydr_corr   
-
-   temp_method   
-
-   twf_c   
-
-   c_calibr_grav   
-
-   c_calibr_fric   
-
-   c_calibr_choke   
-
-   q_gas_sm3day   
-
-   param_out   
-
-   num_pt_crv  
-
-        """
-
-        self.f_wellESP_plin_pintake_atma = self.book.macro("wellESP_plin_pintake_atma")
-        return self.f_wellESP_plin_pintake_atma(''qliq_sm3day,'fw_perc,'pintake_atma,'h_perf_m,'p_cas_atma,'d_choke_mm,'str_PVT,'str_AL,'hmes_habs_list_m,'dtub_list_mm,'dcas_list_mm,'temp_list_C,'hydr_corr,'temp_method,'twf_C,'c_calibr_grav,'c_calibr_fric,'c_calibr_choke,'q_gas_sm3day,'param_out,'num_pt_crv)
-
-    def nodal_pwf_atma(self, ''pi_sm3dayatm,'pres_atma,'fw_perc,'h_perf_m,'plin_atma,'p_cas_atma,'d_choke_mm,'str_PVT=PVT_DEFAULT,'str_AL="",'hmes_habs_list_m=0,'dtub_list_mm=0,'dcas_list_mm=0,'temp_list_C=0,'hydr_corr=H_CORRELATION,'temp_method=StartEndTemp,'twf_C=0,'c_calibr_grav=1,'c_calibr_fric=1,'c_calibr_choke=1,'q_gas_sm3day=0,'num_pt_crv=21):
-        """
- ========== description ============== 
- Расчет забойного давления по узловому анализу,  скважины и пласта. 
-        
- ==========  arguments  ============== 
-
-   pi_sm3dayatm   
-
-   pres_atma   
-
-   fw_perc   
-
-   h_perf_m   
-
-   plin_atma   
-
-   p_cas_atma   
-
-   d_choke_mm   
-
-   str_pvt   
-
-   str_al   
-
-   hmes_habs_list_m   
-
-   dtub_list_mm   
-
-   dcas_list_mm   
-
-   temp_list_c   
-
-   hydr_corr   
-
-   temp_method   
-
-   twf_c   
-
-   c_calibr_grav   
-
-   c_calibr_fric   
-
-   c_calibr_choke   
-
-   q_gas_sm3day   
-
-   num_pt_crv  
-
-        """
-
-        self.f_nodal_pwf_atma = self.book.macro("nodal_pwf_atma")
-        return self.f_nodal_pwf_atma(''pi_sm3dayatm,'pres_atma,'fw_perc,'h_perf_m,'plin_atma,'p_cas_atma,'d_choke_mm,'str_PVT,'str_AL,'hmes_habs_list_m,'dtub_list_mm,'dcas_list_mm,'temp_list_C,'hydr_corr,'temp_method,'twf_C,'c_calibr_grav,'c_calibr_fric,'c_calibr_choke,'q_gas_sm3day,'num_pt_crv)
+        return self.f_wellESP_plin_pwf_atma(p_wf_atma,t_wf_C,q_liq_sm3day,fw_perc,q_gas_sm3day,p_cas_atma,str_PVT,str_struct,str_ESP,str_gassep,str_motor,str_cable,str_amb,hcorr,tmethod,c_calibr,out)
 
     def crv_interpolation(self, x_points,y_points,x_val,type_interpolation=0):
         """
@@ -2959,7 +2759,7 @@ class API():
         self.f_crv_fit_spline_1D = self.book.macro("crv_fit_spline_1D")
         return self.f_crv_fit_spline_1D(XA,YA,M,XIA,WA,XCA,YCA,DCA,hermite)
 
-    def crv_fit_linear(self, YA,XA,out,weight,constraints):
+    def crv_fit_linear(self, YA,XA,out,weight,restrictions):
         """
  ========== description ============== 
 Аппроксимация данных линейной функцией. Решается задача min|XM-Y| ищется вектор M 
@@ -2974,14 +2774,14 @@ class API():
 
      weight - вектор весов [0..n-1] для каждого параметра    
 
-     constraints - матрица ограничений с [0..k-1, 0..d] такая что  c[i,0]*m[0] + ... + c[i,d-1]*c[d-1] = cmatrix[i,d]   
+     restrictions - матрица ограничений с [0..k-1, 0..d] такая что  c[i,0]*m[0] + ... + c[i,d-1]*c[d-1] = cmatrix[i,d]   
 
         """
 
         self.f_crv_fit_linear = self.book.macro("crv_fit_linear")
-        return self.f_crv_fit_linear(YA,XA,out,weight,raints)
+        return self.f_crv_fit_linear(YA,XA,out,weight,restrictions)
 
-    def crv_fit_poly(self, YA,XA,M,out,XIA,weight,constraints):
+    def crv_fit_poly(self, YA,XA,M,out,XIA,weight,restrictions):
         """
  ========== description ============== 
 Аппроксимация данных полиномом функцией. Решается задача min|XM-Y| ищется вектор M 
@@ -3000,12 +2800,12 @@ class API():
 
      weight - вектор весов [0..n-1] для каждого параметра    
 
-     constraints - матрица ограничений с[0..k-1,0..2].  с[i,0] - значение x где задано ограничение  с[i,1] - велична ограничения,  с[i,2] - тип ограничения (0 -значение,1 -производ..см.мануал  
+     restrictions - матрица ограничений с[0..k-1,0..2].  с[i,0] - значение x где задано ограничение  с[i,1] - велична ограничения,  с[i,2] - тип ограничения (0 -значение,1 -произво..см.мануал  
 
         """
 
         self.f_crv_fit_poly = self.book.macro("crv_fit_poly")
-        return self.f_crv_fit_poly(YA,XA,M,out,XIA,weight,raints)
+        return self.f_crv_fit_poly(YA,XA,M,out,XIA,weight,restrictions)
 
     def crv_parametric_interpolation(self, x_points,y_points,x_val,type_interpolation=0,param_points=-1):
         """
