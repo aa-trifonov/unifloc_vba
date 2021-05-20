@@ -1559,6 +1559,24 @@ class API():
         self.f_encode_table_json = self.book.macro("encode_table_json")
         return self.f_encode_table_json(keyrange,val_namerange,valrange)
 
+    def encode_pipe(self, h_list_m=1000,diam_list_mm=62,roughness_m=0):
+        """
+ ========== description ============== 
+ encodes pipe construction into json string 
+        
+ ==========  arguments  ============== 
+
+     h_list_m - trajectory data    
+
+     diam_list_mm - массив для диаметров    
+
+     roughness_m - значение шероховатости   
+
+        """
+
+        self.f_encode_pipe = self.book.macro("encode_pipe")
+        return self.f_encode_pipe(h_list_m,diam_list_mm,roughness_m)
+
     def encode_t_model(self, t_model=StartEndTemp,t_list_C=50,t_start_C=-100,t_end_C=-100,param=""):
         """
  ========== description ============== 

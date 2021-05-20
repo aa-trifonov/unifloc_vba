@@ -836,12 +836,15 @@ End Function
     
    combine_json = Left(str1, Len(str1) - 1) & "," & Right(str2, Len(str2) - 1)
  End Function
+'description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+' encodes pipe construction into json string
 Public Function encode_pipe(Optional h_list_m As Variant = 1000, _
                             Optional diam_list_mm As Variant = 62, _
                             Optional roughness_m As Double = 0)
-' encodes pipe construction into json string
 ' h_list_m - trajectory data
-'
+' diam_list_mm - массив для диаметров
+' roughness_m - значение шероховатости
+'description_end
     
     Dim dict As New Dictionary
     Dim h_curve As New CInterpolation

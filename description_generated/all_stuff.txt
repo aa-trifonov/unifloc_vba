@@ -766,6 +766,15 @@
 
  
     Application.MacroOptions _
+        Macro:="encode_pipe", _
+        Description:=" encodes pipe construction into json string ", _
+        Category:="u7", _
+        ArgumentDescriptions:=Array( " h_list_m - trajectory data ", _
+ " diam_list_mm - массив для диаметров ", _
+ " roughness_m - значение шероховатости ") 
+
+ 
+    Application.MacroOptions _
         Macro:="encode_t_model", _
         Description:=" кодирование параметров температурной модели трубы/скважины ", _
         Category:="u7", _

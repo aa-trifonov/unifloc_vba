@@ -50,7 +50,7 @@
       <recent name="C:\Users\olegk\Documents\unifloc_vba" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.python_api">
+  <component name="RunManager" selected="Python.description_generator (1)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="unifloc_vba" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,8 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.python_api" />
         <item itemvalue="Python.description_generator (1)" />
+        <item itemvalue="Python.python_api" />
         <item itemvalue="Python.listings_generator" />
         <item itemvalue="Python.description_generator" />
       </list>
