@@ -251,7 +251,7 @@ Public Function MF_pipe_p_atma( _
         Optional ByVal flow_correlation As Integer = 0, _
         Optional ByVal calibr_grav As Double = 1, _
         Optional ByVal calibr_fric As Double = 1, _
-        Optional ByVal param As String)
+        Optional ByVal param As String = "")
 ' p_calc_from_atma  - давление с которого начинается расчет, атм
 '           граничное значение для проведения расчета
 ' t_calc_from_C - температура в точке где задано давление расчета
@@ -334,7 +334,7 @@ Public Function MF_pipe_calc( _
         Optional ByVal flow_correlation As Integer = 0, _
         Optional ByVal calibr_grav As Double = 1, _
         Optional ByVal calibr_fric As Double = 1, _
-        Optional ByVal param As String)
+        Optional ByVal param As String = "")
 ' p_calc_from_atma  - давление с которого начинается расчет, атм
 '           граничное значение для проведения расчета
 ' t_calc_from_C - температура в точке где задано давление расчета

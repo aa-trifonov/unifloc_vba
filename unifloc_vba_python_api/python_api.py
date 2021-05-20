@@ -93,7 +93,7 @@ class API():
         self.f_MF_choke_calibr = self.book.macro("MF_choke_calibr")
         return self.f_MF_choke_calibr(feed,d_choke_mm,p_in_atma,p_out_atma,d_pipe_mm,t_choke_C,param)
 
-    def MF_pipe_p_atma(self, p_calc_from_atma,t_calc_from_C,construction="",feed="",t_model="",calc_along_coord=True,flow_along_coord=True,flow_correlation=0,calibr_grav=1,calibr_fric=1,param):
+    def MF_pipe_p_atma(self, p_calc_from_atma,t_calc_from_C,construction="",feed="",t_model="",calc_along_coord=True,flow_along_coord=True,flow_correlation=0,calibr_grav=1,calibr_fric=1,param=""):
         """
  ========== description ============== 
  расчет распределения давления и температуры в трубопроводе  выводит результат в виде таблицы значений 
@@ -125,9 +125,9 @@ class API():
         """
 
         self.f_MF_pipe_p_atma = self.book.macro("MF_pipe_p_atma")
-        return self.f_MF_pipe_p_atma(p_calc_from_atma,t_calc_from_C,ruction,feed,t_model,calc_along_coord,flow_along_coord,flow_correlation,calibr_grav,calibr_fric,param)
+        return self.f_MF_pipe_p_atma(p_calc_from_atma,t_calc_from_C,construction,feed,t_model,calc_along_coord,flow_along_coord,flow_correlation,calibr_grav,calibr_fric,param)
 
-    def MF_pipe_calc(self, p_calc_from_atma,t_calc_from_C,construction="",feed="",t_model="",calc_along_coord=True,flow_along_coord=True,flow_correlation=0,calibr_grav=1,calibr_fric=1,param):
+    def MF_pipe_calc(self, p_calc_from_atma,t_calc_from_C,construction="",feed="",t_model="",calc_along_coord=True,flow_along_coord=True,flow_correlation=0,calibr_grav=1,calibr_fric=1,param=""):
         """
  ========== description ============== 
  расчет распределения давления и температуры в трубопроводе  выводит полный набор результатов в виде массива json параметров 
@@ -159,7 +159,7 @@ class API():
         """
 
         self.f_MF_pipe_calc = self.book.macro("MF_pipe_calc")
-        return self.f_MF_pipe_calc(p_calc_from_atma,t_calc_from_C,ruction,feed,t_model,calc_along_coord,flow_along_coord,flow_correlation,calibr_grav,calibr_fric,param)
+        return self.f_MF_pipe_calc(p_calc_from_atma,t_calc_from_C,construction,feed,t_model,calc_along_coord,flow_along_coord,flow_correlation,calibr_grav,calibr_fric,param)
 
     def MF_choke_q_sm3day(self, feed,d_choke_mm,p_in_atma,p_out_atma,t_choke_C=20,d_pipe_mm=70,calibr=1,param=""):
         """
@@ -989,7 +989,7 @@ class API():
         self.f_IPR_pi_sm3dayatm = self.book.macro("IPR_pi_sm3dayatm")
         return self.f_IPR_pi_sm3dayatm(Qtest_sm3day,pwf_test_atma,p_res_atma,fw_perc,pb_atma)
 
-    def ESP_head_m(self, qliq_m3day,num_stages=1,freq_Hz=50,pump_id,mu_cSt=-1,calibr_head=1,calibr_rate=1,calibr_power=1):
+    def ESP_head_m(self, qliq_m3day,num_stages=1,freq_Hz=50,pump_id=737,mu_cSt=-1,calibr_head=1,calibr_rate=1,calibr_power=1):
         """
  ========== description ============== 
  номинальный напор ЭЦН (на основе каталога ЭЦН)  учитывается поправка на вязкость и калибровки 
@@ -1087,7 +1087,7 @@ class API():
         self.f_ESP_name = self.book.macro("ESP_name")
         return self.f_ESP_name(pump_id)
 
-    def ESP_rate_max_sm3day(self, freq_Hz=50,pump_id,mu_cSt=-1,calibr_rate=1):
+    def ESP_rate_max_sm3day(self, freq_Hz=50,pump_id=737,mu_cSt=-1,calibr_rate=1):
         """
  ========== description ============== 
  максимальный дебит ЭЦН для заданной частоты  по номинальной кривой РНХ 
@@ -1107,7 +1107,7 @@ class API():
         self.f_ESP_rate_max_sm3day = self.book.macro("ESP_rate_max_sm3day")
         return self.f_ESP_rate_max_sm3day(freq_Hz,pump_id,mu_cSt,calibr_rate)
 
-    def ESP_optRate_m3day(self, freq_Hz=50,pump_id,mu_cSt=-1,calibr_rate=1):
+    def ESP_optRate_m3day(self, freq_Hz=50,pump_id=737,mu_cSt=-1,calibr_rate=1):
         """
  ========== description ============== 
  оптимальный дебит ЭЦН для заданной частоты  по номинальной кривой РНХ 
@@ -1141,7 +1141,7 @@ class API():
         self.f_ESP_id_by_rate = self.book.macro("ESP_id_by_rate")
         return self.f_ESP_id_by_rate(q)
 
-    def ESP_p_atma(self, p_calc_atma,t_intake_C=50,t_dis_C=50,feed="",pump_id,num_stages=1,freq_Hz=50,calc_along_flow=True,calibr_head=1,calibr_rate=1,calibr_power=1,gas_correct_model=0,gas_correct_stage_by_stage=0,param):
+    def ESP_p_atma(self, p_calc_atma,t_intake_C=50,t_dis_C=50,feed="",pump_id=737,num_stages=1,freq_Hz=50,calc_along_flow=True,calibr_head=1,calibr_rate=1,calibr_power=1,gas_correct_model=0,gas_correct_stage_by_stage=0,param=""):
         """
  ========== description ============== 
 функция расчета давления на выходе/входе ЭЦН в рабочих условиях большинство параметров задается явно 
@@ -1247,7 +1247,7 @@ class API():
         self.f_unf_version = self.book.macro("unf_version")
         return self.f_unf_version()
 
-    def decode_json(self, json,transpose=False,keys_filter,only_values=False,safe_out=False):
+    def decode_json(self, json,transpose=False,keys_filter="",only_values=False,safe_out=False):
         """
  ========== description ============== 
  Функция декодирования json строки,  позволяет вывести содержимое json строки в таблицу 
@@ -1285,7 +1285,7 @@ class API():
         self.f_decode_json_crv = self.book.macro("decode_json_crv")
         return self.f_decode_json_crv(json,transpose)
 
-    def encode_PVT(self, gamma_gas=const_gg_,gamma_oil=const_go_,gamma_wat=const_gw_,rsb_m3m3=const_rsb_default,pb_atma,t_res_C,bob_m3m3,muob_cP,PVT_corr_set):
+    def encode_PVT(self, gamma_gas=const_gg_,gamma_oil=const_go_,gamma_wat=const_gw_,rsb_m3m3=const_rsb_default,pb_atma=-1,t_res_C=-1,bob_m3m3=-1,muob_cP=-1,PVT_corr_set=0):
         """
  ========== description ============== 
  Функция кодирования параметров PVT в строку,  для передачи PVT свойств в прикладные функции Унифлок. 
@@ -1306,14 +1306,14 @@ class API():
 
      bob_m3m3 - объемный коэффициент нефти при давлении насыщения  и пластовой температуре, м3/м3.  по умолчанию рассчитывается по корреляции.    
 
-     muob_cp - вязкость нефти при давлении насыщения.  и пластовой температуре, сп.  по умолчанию рассчитывается по корреляции.  pvt_corr_set - номер набора pvt корреляций для расч..см.мануал   
+     muob_cp - вязкость нефти при давлении насыщения.  и пластовой температуре, сп.  по умолчанию рассчитывается по корреляции.    
 
-   pvt_corr_set_  
+     pvt_corr_set - номер набора pvt корреляций для расчета:  0 - на основе корреляции стендинга;  1 - на основе кор-ии маккейна;  2 - на основе упрощенных зависимостей.   
 
         """
 
         self.f_encode_PVT = self.book.macro("encode_PVT")
-        return self.f_encode_PVT(gamma_gas,gamma_oil,gamma_wat,rsb_m3m3,pb_atma,t_res_C,bob_m3m3,muob_cP,PVT_corr_set_)
+        return self.f_encode_PVT(gamma_gas,gamma_oil,gamma_wat,rsb_m3m3,pb_atma,t_res_C,bob_m3m3,muob_cP,PVT_corr_set)
 
     def encode_feed(self, q_liq_sm3day=10,fw_perc=-1,rp_m3m3=-1,q_gas_free_sm3day=-1,fluid=PVT_DEFAULT):
         """
@@ -1337,7 +1337,7 @@ class API():
         self.f_encode_feed = self.book.macro("encode_feed")
         return self.f_encode_feed(q_liq_sm3day,fw_perc,rp_m3m3,q_gas_free_sm3day,fluid)
 
-    def encode_ESP_pump_string(self, ESP_ID="1005",head_nom_m=2000,num_stages=0,freq_Hz=50,gas_correct,calibr,dnum_stages_integrate=1):
+    def encode_ESP_pump_string(self, ESP_ID="1005",head_nom_m=2000,num_stages=0,freq_Hz=50,gas_correct=10,calibr=1,dnum_stages_integrate=1):
         """
  ========== description ============== 
  функция кодирования параметров работы УЭЦН в строку 
@@ -1363,7 +1363,7 @@ class API():
         self.f_encode_ESP_pump_string = self.book.macro("encode_ESP_pump_string")
         return self.f_encode_ESP_pump_string(ESP_ID,head_nom_m,num_stages,freq_Hz,gas_correct,calibr,dnum_stages_integrate)
 
-    def encode_ESP_motor_string(self, motor_ID=0,U_surf_high_lin_V,f_surf_Hz,power_fact_kW,U_nom_lin_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,Lambda,alpha0,xi0,Ixcf):
+    def encode_ESP_motor_string(self, motor_ID=0,U_surf_high_lin_V=2000,f_surf_Hz=50,power_fact_kW=100,U_nom_lin_V=1000,P_nom_kW=100,f_nom_Hz=50,eff_nom_fr=0.95,cosphi_nom_fr=0.9,slip_nom_fr=0.05,d_od_mm=90,Lambda=2,alpha0=1,xi0=1,Ixcf=1):
         """
  ========== description ============== 
  функция кодирования параметров ПЭД в строку 
@@ -1405,7 +1405,7 @@ class API():
         self.f_encode_ESP_motor_string = self.book.macro("encode_ESP_motor_string")
         return self.f_encode_ESP_motor_string(motor_ID,U_surf_high_lin_V,f_surf_Hz,power_fact_kW,U_nom_lin_V,P_nom_kW,f_nom_Hz,eff_nom_fr,cosphi_nom_fr,slip_nom_fr,d_od_mm,Lambda,alpha0,xi0,Ixcf)
 
-    def encode_ESP_cable_string(self, cable_R_Omkm,cable_X_Omkm,cable_t_max_C,manufacturer="no",name="no",d_mm,length_m):
+    def encode_ESP_cable_string(self, cable_R_Omkm,cable_X_Omkm,cable_t_max_C,manufacturer="no",name="no",d_mm=15,length_m=2000):
         """
  ========== description ============== 
  функция кодирования параметров  кабельной линии ПЭД в строку 
@@ -1431,7 +1431,7 @@ class API():
         self.f_encode_ESP_cable_string = self.book.macro("encode_ESP_cable_string")
         return self.f_encode_ESP_cable_string(cable_R_Omkm,cable_X_Omkm,cable_t_max_C,manufacturer,name,d_mm,length_m)
 
-    def encode_ESP_separation_string(self, separation_mode,gassep_type,natsep_type=0,psep_man_atma,tsep_man_C,ksep_gassep_man_d,ksep_nat_man_d,ksep_liquid_man_d,M_Nm,manufacturer="no",name="no",length_m):
+    def encode_ESP_separation_string(self, separation_mode,gassep_type,psep_man_atma,tsep_man_C,ksep_gassep_man_d,ksep_nat_man_d,ksep_liquid_man_d,M_Nm,length_m,manufacturer="no",name="no",natsep_type=0):
         """
  ========== description ============== 
  функция кодирования газосепаратора 
@@ -1441,8 +1441,6 @@ class API():
      separation_mode - режим расчета сепарации    
 
      gassep_type - тип - номер из базы    
-
-     natsep_type - модель расчета естественной сепарации    
 
      psep_man_atma - давление для расчета  коэффициента сепарации заданного вручную    
 
@@ -1456,16 +1454,18 @@ class API():
 
      m_nm - момент на валу    
 
+     length_m - длина кабельной линии, м    
+
      manufacturer - производитель, для справки    
 
-     name - название кабеля, для справки    
+     name - название кабеля, для справки  length_m - длина кабельной линии, м    
 
-     length_m - длина кабельной линии, м   
+     natsep_type - модель расчета естественной сепарации  psep_man_atma - давление для расчета  коэффициента сепарации заданного вручную  tsep_man_c - температура для расчета  коэ..см.мануал  
 
         """
 
         self.f_encode_ESP_separation_string = self.book.macro("encode_ESP_separation_string")
-        return self.f_encode_ESP_separation_string(separation_mode,gassep_type,natsep_type,psep_man_atma,tsep_man_C,ksep_gassep_man_d,ksep_nat_man_d,ksep_liquid_man_d,M_Nm,manufacturer,name,length_m)
+        return self.f_encode_ESP_separation_string(separation_mode,gassep_type,psep_man_atma,tsep_man_C,ksep_gassep_man_d,ksep_nat_man_d,ksep_liquid_man_d,M_Nm,length_m,manufacturer,name,natsep_type)
 
     def encode_ambient_formation_string(self, therm_cond_form_WmC=2.4252,sp_heat_capacity_form_JkgC=200,therm_cond_cement_WmC=6.965,therm_cond_tubing_WmC=32,therm_cond_casing_WmC=32,heat_transfer_casing_liquid_Wm2C=200,heat_transfer_casing_gas_Wm2C=10,heat_transfer_fluid_convection_Wm2C=200,t_calc_hr=240):
         """
@@ -1496,46 +1496,6 @@ class API():
 
         self.f_encode_ambient_formation_string = self.book.macro("encode_ambient_formation_string")
         return self.f_encode_ambient_formation_string(therm_cond_form_WmC,sp_heat_capacity_form_JkgC,therm_cond_cement_WmC,therm_cond_tubing_WmC,therm_cond_casing_WmC,heat_transfer_casing_liquid_Wm2C,heat_transfer_casing_gas_Wm2C,heat_transfer_fluid_convection_Wm2C,t_calc_hr)
-
-    def GL_decode_string(self, 'well_GL_str,'getStr=False):
-        """
- ========== description ============== 
- функция расшифровки параметров газлифтной компоновки скважины 
-        
- ==========  arguments  ============== 
-
-   well_gl_str   
-
-   getstr  
-
-        """
-
-        self.f_GL_decode_string = self.book.macro("GL_decode_string")
-        return self.f_GL_decode_string('well_GL_str,'getStr)
-
-    def GL_encode_string(self, ''q_gas_inj_sm3day=0,'p_gas_inj_atma=0,'d_gas_inj_mm=0,'HmesGLV_m=0,'dGLV_mm=0,'PsurfGLV_atma=0):
-        """
- ========== description ============== 
- функция кодирования параметров работы скважины с газлифтом 
-        
- ==========  arguments  ============== 
-
-   q_gas_inj_sm3day   
-
-   p_gas_inj_atma   
-
-   d_gas_inj_mm   
-
-   hmesglv_m   
-
-   dglv_mm   
-
-   psurfglv_atma  
-
-        """
-
-        self.f_GL_encode_string = self.book.macro("GL_encode_string")
-        return self.f_GL_encode_string(''q_gas_inj_sm3day,'p_gas_inj_atma,'d_gas_inj_mm,'HmesGLV_m,'dGLV_mm,'PsurfGLV_atma)
 
     def encode_well_construction_string(self, h_perf_m,h_tub_m,h_list_m,d_tub_list_mm,d_cas_list_mm,d_choke_mm,t_val_C,rough_m=0.0001):
         """
@@ -1795,7 +1755,7 @@ class API():
         """
 
         self.f_crv_fit_linear = self.book.macro("crv_fit_linear")
-        return self.f_crv_fit_linear(YA,XA,out,weight,raints)
+        return self.f_crv_fit_linear(YA,XA,out,weight,constraints)
 
     def crv_fit_poly(self, YA,XA,M,out,XIA,weight,constraints):
         """
@@ -1821,7 +1781,7 @@ class API():
         """
 
         self.f_crv_fit_poly = self.book.macro("crv_fit_poly")
-        return self.f_crv_fit_poly(YA,XA,M,out,XIA,weight,raints)
+        return self.f_crv_fit_poly(YA,XA,M,out,XIA,weight,constraints)
 
     def crv_parametric_interpolation(self, x_points,y_points,x_val,type_interpolation=0,param_points=-1):
         """

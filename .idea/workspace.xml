@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3dcb58b-4a34-49e0-be72-204b8b23e2b7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/unifloc_vba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/unifloc_vba.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples_python/ex073.ESP.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniflocVBA_7.xlam" beforeDir="false" afterPath="$PROJECT_DIR$/UniflocVBA_7.xlam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/description_generated/all_stuff.txt" beforeDir="false" afterPath="$PROJECT_DIR$/description_generated/all_stuff.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/description_generated/report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/description_generated/report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/description_generated/u7_descriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/description_generated/u7_descriptions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/description_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/description_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules_txt/u7_Excel_functions_ESP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modules_txt/u7_Excel_functions_ESP.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules_txt/u7_Excel_functions_MF.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modules_txt/u7_Excel_functions_MF.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules_txt/u7_Excel_functions_service.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modules_txt/u7_Excel_functions_service.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unifloc_vba_python_api/python_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/unifloc_vba_python_api/python_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +36,6 @@
   <component name="ProjectId" id="1bolc2QwR50nclZv0ZSDEYFBD38" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -41,7 +50,7 @@
       <recent name="C:\Users\olegk\Documents\unifloc_vba" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.description_generator (1)">
+  <component name="RunManager" selected="Python.python_api">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="unifloc_vba" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,8 +135,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="python_api" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="unifloc_vba" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Anaconda\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/unifloc_vba_python_api/python_api.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.python_api" />
         <item itemvalue="Python.description_generator (1)" />
         <item itemvalue="Python.listings_generator" />
         <item itemvalue="Python.description_generator" />
@@ -146,32 +177,6 @@
       <updated>1563448533181</updated>
     </task>
     <servers />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="580" height="912" key="GridCell.Tab.0.bottom" timestamp="1589306830283">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="580" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589306830283" />
-    <state width="580" height="912" key="GridCell.Tab.0.center" timestamp="1589306830283">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="580" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589306830283" />
-    <state width="580" height="912" key="GridCell.Tab.0.left" timestamp="1589306830282">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="580" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589306830282" />
-    <state width="580" height="912" key="GridCell.Tab.0.right" timestamp="1589306830283">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="580" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589306830283" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1589306505257">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589306505257" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1589558698824">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589558698824" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -18,7 +18,7 @@ End Function
 ' позволяет вывести содержимое json строки в таблицу
 Public Function decode_json(json, _
                           Optional transpose As Boolean = False, _
-                          Optional keys_filter, _
+                          Optional keys_filter As String = "", _
                           Optional only_values As Boolean = False, _
                           Optional safe_out As Boolean = False)
 ' json   - строка содержащая результаты расчета
@@ -229,12 +229,12 @@ Public Function encode_PVT( _
                     Optional ByVal gamma_oil As Double = const_go_, _
                     Optional ByVal gamma_wat As Double = const_gw_, _
                     Optional ByVal rsb_m3m3 = const_rsb_default, _
-                    Optional ByVal pb_atma, _
-                    Optional ByVal t_res_C, _
-                    Optional ByVal bob_m3m3, _
-                    Optional ByVal muob_cP, _
-                    Optional ByVal PVT_corr_set _
-                    )
+                    Optional ByVal pb_atma As Double = -1, _
+                    Optional ByVal t_res_C As Double = -1, _
+                    Optional ByVal bob_m3m3 As Double = -1, _
+                    Optional ByVal muob_cP As Double = -1, _
+                    Optional ByVal PVT_corr_set As Integer = 0 _
+                        )
 ' gamma_gas - удельная плотность газа, по воздуху.
 '             По умолчанию const_gg_ = 0.6
 ' gamma_oil - удельная плотность нефти, по воде.
@@ -323,8 +323,8 @@ Public Function encode_ESP_pump_string( _
             Optional ByVal head_nom_m As Double = 2000, _
             Optional ByVal num_stages As Integer = 0, _
             Optional ByVal freq_Hz As Double = 50, _
-            Optional ByVal gas_correct, _
-            Optional ByVal calibr, _
+            Optional ByVal gas_correct As Double = 10, _
+            Optional ByVal calibr As Double = 1, _
             Optional ByVal dnum_stages_integrate = 1)
 ' esp_ID         - идентификатор насоса
 ' head_nom_m     - номинальный напор системы УЭЦН
@@ -399,20 +399,21 @@ End Function
 ' функция кодирования параметров ПЭД в строку
 Public Function encode_ESP_motor_string( _
             Optional ByVal motor_ID As Long = 0, _
-            Optional ByVal U_surf_high_lin_V As Double, _
-            Optional ByVal f_surf_Hz As Double, _
-            Optional ByVal power_fact_kW As Double, _
-            Optional ByVal U_nom_lin_V As Double, _
-            Optional ByVal P_nom_kW As Double, _
-            Optional ByVal f_nom_Hz As Double, _
-            Optional ByVal eff_nom_fr As Double, _
-            Optional ByVal cosphi_nom_fr As Double, _
-            Optional ByVal slip_nom_fr As Double, _
-            Optional ByVal d_od_mm As Double, _
-            Optional ByVal Lambda As Double, _
-            Optional ByVal alpha0 As Double, _
-            Optional ByVal xi0 As Double, _
-            Optional ByVal Ixcf As Double)
+            Optional ByVal U_surf_high_lin_V As Double = 2000, _
+            Optional ByVal f_surf_Hz As Double = 50, _
+            Optional ByVal power_fact_kW As Double = 100, _
+            Optional ByVal U_nom_lin_V As Double = 1000, _
+            Optional ByVal P_nom_kW As Double = 100, _
+            Optional ByVal f_nom_Hz As Double = 50, _
+            Optional ByVal eff_nom_fr As Double = 0.95, _
+            Optional ByVal cosphi_nom_fr As Double = 0.9, _
+            Optional ByVal slip_nom_fr As Double = 0.05, _
+            Optional ByVal d_od_mm As Double = 90, _
+            Optional ByVal Lambda As Double = 2, _
+            Optional ByVal alpha0 As Double = 1, _
+            Optional ByVal xi0 As Double = 1, _
+            Optional ByVal Ixcf As Double = 1)
+            
 'motor_ID - тип 0 - постоянные значения,
 '               1 - задается по каталожным кривым, ассинхронный
 '               2 - задается по схеме замещения, ассинхронный
@@ -465,8 +466,8 @@ Public Function encode_ESP_cable_string( _
             Optional ByVal cable_t_max_C As Double, _
             Optional ByVal manufacturer As String = "no", _
             Optional ByVal name As String = "no", _
-            Optional ByVal d_mm As Double, _
-            Optional ByVal length_m As Double)
+            Optional ByVal d_mm As Double = 15, _
+            Optional ByVal length_m As Double = 2000)
 ' cable_R_Omkm - удельное активное сопротивление
 ' cable_X_Omkm - удельное реактивное сопротивление
 ' cable_t_max_C - максимально допустимая температура
@@ -493,16 +494,17 @@ End Function
 Public Function encode_ESP_separation_string( _
             Optional ByVal separation_mode As String, _
             Optional ByVal gassep_type As Long, _
-            Optional ByVal natsep_type As Long = 0, _
             Optional ByVal psep_man_atma As Double, _
             Optional ByVal tsep_man_C As Double, _
             Optional ByVal ksep_gassep_man_d As Double, _
             Optional ByVal ksep_nat_man_d As Double, _
             Optional ByVal ksep_liquid_man_d As Double, _
             Optional ByVal M_Nm As Double, _
+            Optional ByVal length_m As Double, _
             Optional ByVal manufacturer As String = "no", _
             Optional ByVal name As String = "no", _
-            Optional ByVal length_m As Double)
+            Optional ByVal natsep_type As Long = 0 _
+            )
 ' separation_mode - режим расчета сепарации
 ' gassep_type - тип - номер из базы
 ' natsep_type - модель расчета естественной сепарации
@@ -586,7 +588,7 @@ Public Function encode_ambient_formation_string( _
     encode_ambient_formation_string = ConvertToJson(dict)
 End Function
 ''=============================
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+''de scription_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' функция расшифровки параметров газлифтной компоновки скважины
 'Public Function GL_decode_string(well_GL_str As String, _
 '                  Optional ByVal getStr As Boolean = False)
@@ -675,7 +677,7 @@ End Function
 '
 'End Function
 '
-''description_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
+''des cr iption_to_manual      - для автогенерации описания - помещает заголовок функции и окружающие комментарии в мануал (со след строки)
 '' функция кодирования параметров работы скважины с газлифтом
 'Public Function GL_encode_string( _
 '                    Optional q_gas_inj_sm3day As Double = 0, _

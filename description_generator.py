@@ -285,6 +285,8 @@ class VBA_Func_Header:
                                                                                         "hydr_corr=H_CORRELATION")
                 #string_with_parameters_for_api = string_with_parameters_for_api.lower()
                 for i in not_nedeed_in_string:
+                    if i == 'const' and ('construction' in current_addition or 'constraints' in current_addition):
+                        continue
 
                     current_addition = current_addition.replace(i, "")
                 sting_with_parametrs_and_delimetr += current_addition

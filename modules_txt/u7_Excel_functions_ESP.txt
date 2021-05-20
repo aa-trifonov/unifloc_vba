@@ -19,7 +19,7 @@ Public Function ESP_head_m( _
         ByVal qliq_m3day As Double, _
         Optional ByVal num_stages As Integer = 1, _
         Optional ByVal freq_Hz As Double = 50, _
-        Optional ByVal pump_id As Long, _
+        Optional ByVal pump_id As Long = 737, _
         Optional ByVal mu_cSt As Double = -1, _
         Optional ByVal calibr_head As Double = 1, _
         Optional ByVal calibr_rate As Double = 1, _
@@ -167,7 +167,7 @@ End Function
 ' по номинальной кривой РНХ
 Public Function ESP_rate_max_sm3day( _
     Optional ByVal freq_Hz As Double = 50, _
-    Optional ByVal pump_id As Long, _
+    Optional ByVal pump_id As Long = 737, _
     Optional ByVal mu_cSt As Double = -1, _
     Optional ByVal calibr_rate As Double = 1) As Double
 ' freq_Hz   - частота вращения ЭЦН
@@ -195,7 +195,7 @@ End Function
 ' по номинальной кривой РНХ
 Public Function ESP_optRate_m3day( _
     Optional ByVal freq_Hz As Double = 50, _
-    Optional ByVal pump_id As Long, _
+    Optional ByVal pump_id As Long = 737, _
     Optional ByVal mu_cSt As Double = -1, _
     Optional ByVal calibr_rate As Double = 1) As Double
 ' freq_Hz   - частота вращения ЭЦН
@@ -249,7 +249,7 @@ Public Function ESP_p_atma( _
         Optional ByVal t_intake_C As Double = 50, _
         Optional ByVal t_dis_C As Double = 50, _
         Optional ByVal feed As String = "", _
-        Optional ByVal pump_id As Long, _
+        Optional ByVal pump_id As Long = 737, _
         Optional ByVal num_stages As Integer = 1, _
         Optional ByVal freq_Hz As Double = 50, _
         Optional ByVal calc_along_flow As Boolean = True, _
@@ -258,7 +258,7 @@ Public Function ESP_p_atma( _
         Optional ByVal calibr_power As Double = 1, _
         Optional ByVal gas_correct_model As Integer = 0, _
         Optional ByVal gas_correct_stage_by_stage As Integer = 0, _
-        Optional ByVal param As String)
+        Optional ByVal param As String = "")
 ' p_calc_atma      - давление для которого делается расчет
 '                    либо давление на приеме насоса
 '                    либо давление на выкиде насоса

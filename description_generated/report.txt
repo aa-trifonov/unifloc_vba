@@ -10,14 +10,14 @@
   
  Отчет по функции MF_pipe_p_atma 
  Количество параметров в функции = 11 
- Строка параметров:p_calc_from_atma, t_calc_from_C, ruction, feed, t_model, calc_along_coord, flow_along_coord, flow_correlation, calibr_grav, calibr_fric, param 
+ Строка параметров:p_calc_from_atma, t_calc_from_C, construction, feed, t_model, calc_along_coord, flow_along_coord, flow_correlation, calibr_grav, calibr_fric, param 
  Параметров найдено и записано = 10 
  Ошибка! Не найдены параметры! Количество: 1 
  Список параметров: flow_correlation   
   
  Отчет по функции MF_pipe_calc 
  Количество параметров в функции = 11 
- Строка параметров:p_calc_from_atma, t_calc_from_C, ruction, feed, t_model, calc_along_coord, flow_along_coord, flow_correlation, calibr_grav, calibr_fric, param 
+ Строка параметров:p_calc_from_atma, t_calc_from_C, construction, feed, t_model, calc_along_coord, flow_along_coord, flow_correlation, calibr_grav, calibr_fric, param 
  Параметров найдено и записано = 10 
  Ошибка! Не найдены параметры! Количество: 1 
  Список параметров: flow_correlation   
@@ -313,10 +313,8 @@
   
  Отчет по функции encode_PVT 
  Количество параметров в функции = 9 
- Строка параметров:gamma_gas, gamma_oil, gamma_wat, rsb_m3m3, pb_atma, t_res_C, bob_m3m3, muob_cP, PVT_corr_set_ 
- Параметров найдено и записано = 8 
- Ошибка! Не найдены параметры! Количество: 1 
- Список параметров: pvt_corr_set_   
+ Строка параметров:gamma_gas, gamma_oil, gamma_wat, rsb_m3m3, pb_atma, t_res_C, bob_m3m3, muob_cP, PVT_corr_set 
+ Параметров найдено и записано = 9 
   
  Отчет по функции encode_feed 
  Количество параметров в функции = 5 
@@ -344,7 +342,7 @@
   
  Отчет по функции encode_ESP_separation_string 
  Количество параметров в функции = 12 
- Строка параметров:separation_mode, gassep_type, natsep_type, psep_man_atma, tsep_man_C, ksep_gassep_man_d, ksep_nat_man_d, ksep_liquid_man_d, M_Nm, manufacturer, name, length_m 
+ Строка параметров:separation_mode, gassep_type, psep_man_atma, tsep_man_C, ksep_gassep_man_d, ksep_nat_man_d, ksep_liquid_man_d, M_Nm, length_m, manufacturer, name, natsep_type 
  Параметров найдено и записано = 12 
   
  Отчет по функции encode_ambient_formation_string 
@@ -353,20 +351,6 @@
  Параметров найдено и записано = 8 
  Ошибка! Не найдены параметры! Количество: 1 
  Список параметров: therm_cond_casing_wmc   
-  
- Отчет по функции GL_decode_string 
- Количество параметров в функции = 2 
- Строка параметров:'well_GL_str, 'getStr 
- Параметров найдено и записано = 0 
- Ошибка! Не найдены параметры! Количество: 2 
- Список параметров: 'well_gl_str  'getstr   
-  
- Отчет по функции GL_encode_string 
- Количество параметров в функции = 6 
- Строка параметров:''q_gas_inj_sm3day, 'p_gas_inj_atma, 'd_gas_inj_mm, 'HmesGLV_m, 'dGLV_mm, 'PsurfGLV_atma 
- Параметров найдено и записано = 0 
- Ошибка! Не найдены параметры! Количество: 6 
- Список параметров: ''q_gas_inj_sm3day  'p_gas_inj_atma  'd_gas_inj_mm  'hmesglv_m  'dglv_mm  'psurfglv_atma   
   
  Отчет по функции encode_well_construction_string 
  Количество параметров в функции = 8 
@@ -429,12 +413,12 @@
   
  Отчет по функции crv_fit_linear 
  Количество параметров в функции = 5 
- Строка параметров:YA, XA, out, weight, raints 
+ Строка параметров:YA, XA, out, weight, constraints 
  Параметров найдено и записано = 5 
   
  Отчет по функции crv_fit_poly 
  Количество параметров в функции = 7 
- Строка параметров:YA, XA, M, out, XIA, weight, raints 
+ Строка параметров:YA, XA, M, out, XIA, weight, constraints 
  Параметров найдено и записано = 7 
   
  Отчет по функции crv_parametric_interpolation 
